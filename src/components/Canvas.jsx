@@ -10,8 +10,8 @@ const Canvas = observer(() => {
   const canvasRef = useRef()
   
   useEffect(() => {
-    canvasState.setCanvas();
-    toolState.setTool(new Brush(canvasRef.current));
+    canvasState.setCanvas(canvasRef.current);
+    toolState.setTool(new Brush(canvasState.canvas));
   }, [])
 
   return (
