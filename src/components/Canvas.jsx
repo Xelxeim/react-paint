@@ -5,7 +5,7 @@ import "../styles/canvas.scss";
 const Canvas = () => {
   return (
     <div className="canvas">
-      <canvas widt={600} height={400}></canvas>
+      <canvas width={800} height={600}></canvas>
     </div>
   )
 }
