@@ -31,18 +31,19 @@ export default class Rect extends Tool {
       let currentY = e.pageY - e.target.offsetTop;
       let width = currentX - this.startX;
       let height = currentY - this.startY;
-      this.draw(this.startX, this.startY, width, height);
+      let radius = Math.sqrt(width**2 + height**2);
+      this.draw(this.startX, this.startY, radius);
     }
   }
 
-  draw(x, y, width, height) {
+  draw(x, y, radius) {
     const img = new Image();
     img.src = this.saved;
     img.onload = () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
       this.ctx.beginPath();
-      this.ctx.rect(x, y, width, height);
+      this.ctx.arc(x, y, radius, 0, 2*Math.PI);
       this.ctx.fill();
       this.ctx.stroke();
     }

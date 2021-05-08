@@ -1,6 +1,6 @@
 import Tool from './Tool';
 
-export default class Rect extends Tool {
+export default class Line extends Tool {
   constructor(canvas) {
     super(canvas);
     this.listen();
@@ -22,28 +22,25 @@ export default class Rect extends Tool {
     this.ctx.beginPath();
     this.startX = e.pageX - e.target.offsetLeft;
     this.startY = e.pageY - e.target.offsetTop;
+    this.ctx.moveTo(this.startX, this.startY);
     this.saved = this.canvas.toDataURL();
   }
 
   mouseMoveHandler(e) {
     if (this.mouseDown) {
-      let currentX = e.pageX - e.target.offsetLeft;
-      let currentY = e.pageY - e.target.offsetTop;
-      let width = currentX - this.startX;
-      let height = currentY - this.startY;
-      this.draw(this.startX, this.startY, width, height);
+      this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
     }
   }
 
-  draw(x, y, width, height) {
+  draw(x, y) {
     const img = new Image();
     img.src = this.saved;
     img.onload = () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
       this.ctx.beginPath();
-      this.ctx.rect(x, y, width, height);
-      this.ctx.fill();
+      this.ctx.moveTo(this.startX, this.startY);
+      this.ctx.lineTo(x, y)
       this.ctx.stroke();
     }
   }
