@@ -1,0 +1,23 @@
+@import "./variables.scss";
+
+.toolbar {
+  height: $toolbar-height;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 4px 5px #808080;
+  z-index: 100;
+}
+
+.settings-bar {
+  height: $toolbar-height;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 4px 5px #808080;
+  top: $toolbar-height;
+}
