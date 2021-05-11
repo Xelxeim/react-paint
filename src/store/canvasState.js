@@ -28,8 +28,8 @@ class CanvasState {
       this.redoList.push(this.canvas.toDataURL());
       let img = new Image();
       img.src = dataUrl;
-      img.onLoad = () => {
-        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      img.onload = () => {
+        ctx.clearRect(0,0, this.canvas.width, this.canvas.height)
         ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
       }
     } else {
@@ -44,7 +44,7 @@ class CanvasState {
       this.undoList.push(this.canvas.toDataURL());
       let img = new Image();
       img.src = dataUrl;
-      img.onLoad = () => {
+      img.onload = () => {
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
       }
